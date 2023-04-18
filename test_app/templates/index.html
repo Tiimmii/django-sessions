@@ -4,11 +4,26 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Products</title>
+    <style>
+        .container{
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        .image{
+            width: 100px;
+            height: 100px;
+        }
+    </style>
 </head>
 <body>
-    {% for product in product %}
-    <p>{{product.title}}</p>
-    {% endfor %}
+    <div class="container">
+        <h1>Products:</h1>
+        {% for product in product %}
+        <img class="image" src="{{product.image_url}}"/>
+        <a href="{% url 'p:detail' product.id %}"><p>{{product.title}}</p></a>
+        {% endfor %}
+    </div>
 </body>
 </html>

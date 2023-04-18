@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Details</title>
+</head>
+    <style>
+        .container{
+            text-align: center;
+        }
+        .image{
+            width: 200px;
+            height: 200px;
+        }
+        .related_img{
+            height: 100px;
+            width: 100px;
+        }
+    </style>
+<body>
+    <div class="container">
+        <h1>{{product.title}}</h1>
+        <img src="{{product.image_url}}" class="image"/>
+        <p>{{product.description}}</p>
+        <h3>Recently viewed:</h3>
+        <img src="{{product.image_url}}" alt="" class="related_img">
+        <img src="{{product.image_url}}" alt="" class="related_img">
+        <img src="{{product.image_url}}" alt="" class="related_img">
+        <img src="{{product.image_url}}" alt="" class="related_img">
+        <img src="{{product.image_url}}" alt="" class="related_img">
+    </div>
+</body>
+</html>

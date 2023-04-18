@@ -17,8 +17,13 @@ class product_list(generic.ListView):
                 image_url = i['image']
             )
             product.save()
-            
+
     def get_queryset(self):
         return Product.objects.all()
     
+class product_detail(View):
+    def get(self, request, pk):
+        product = Product.objects.get(pk=pk)
+        return render(request, 'products.html', {"product": product})
+
 
