@@ -21,6 +21,16 @@ class product_list(generic.ListView):
     def get_queryset(self):
         return Product.objects.all()
     
+    
+    def get_context_data(self, **kwargs):
+        context = super(product_list, self). get_context_data(**kwargs)
+        self.request.session['visit'] = int(self.request.session.get('visits', 0)) + 1 #keeps track of how many times the site has been visited
+        context.update({
+            'visited':  self.request.session['visit']
+        })
+        return context
+
+    
 class product_detail(View):
     def get(self, request, pk):
         product = Product.objects.get(pk=pk)
