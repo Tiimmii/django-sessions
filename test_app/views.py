@@ -30,6 +30,17 @@ class product_detail(View):
                 request.session['recently_viewed'].remove(pk)
             
             products = Product.objects.filter(pk__in=request.session['recently_viewed'])
+            recently_viewed = sorted(
+                products, key=lambda x: request.session['recently_viewed'].index(x.id)
+            )
+            request.session.insert(0, pk)
+            if request.session['recently_viewed']>5:
+                request.session['recently_viewed'].pop()
+
+        else:
+            request.session['recently_viewed'] = [pk]
+
+        request.session.modified = True
         return render(request, 'products.html', {"product": product})
 
 
