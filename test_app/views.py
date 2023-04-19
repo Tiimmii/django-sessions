@@ -41,6 +41,6 @@ class product_detail(View):
             request.session['recently_viewed'] = [pk]
 
         request.session.modified = True
-        return render(request, 'products.html', {"product": product})
+        return render(request, 'products.html', {"product": product, "recently_viewed":recently_viewed})
 
 
