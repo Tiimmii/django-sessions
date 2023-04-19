@@ -25,11 +25,9 @@
         <img src="{{product.image_url}}" class="image"/>
         <p>{{product.description}}</p>
         <h3>Recently viewed:</h3>
-        <img src="{{product.image_url}}" alt="" class="related_img">
-        <img src="{{product.image_url}}" alt="" class="related_img">
-        <img src="{{product.image_url}}" alt="" class="related_img">
-        <img src="{{product.image_url}}" alt="" class="related_img">
-        <img src="{{product.image_url}}" alt="" class="related_img">
+        {% for recently_viewed in recently_viewed %}
+        <img src="{{recently_viewed.image_url}}" alt="" class="related_img">
+        {% endfor %}
     </div>
 </body>
 </html>

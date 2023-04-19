@@ -24,6 +24,7 @@ class product_list(generic.ListView):
 class product_detail(View):
     def get(self, request, pk):
         product = Product.objects.get(pk=pk)
+        recently_viewed = None
 
         if 'recently_viewed' in request.session:
             if pk in request.session['recently_viewed']:
@@ -33,10 +34,9 @@ class product_detail(View):
             recently_viewed = sorted(
                 products, key=lambda x: request.session['recently_viewed'].index(x.id)
             )
-            request.session.insert(0, pk)
-            if request.session['recently_viewed']>5:
+            request.session['recently_viewed'].insert(0, pk)
+            if len(request.session['recently_viewed']) >5:
                 request.session['recently_viewed'].pop()
-
         else:
             request.session['recently_viewed'] = [pk]
 
