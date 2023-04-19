@@ -24,6 +24,12 @@ class product_list(generic.ListView):
 class product_detail(View):
     def get(self, request, pk):
         product = Product.objects.get(pk=pk)
+
+        if 'recently_viewed' in request.session:
+            if pk in request.session['recently_viewed']:
+                request.session['recently_viewed'].remove(pk)
+            
+            products = Product.objects.filter(pk__in=request.session['recently_viewed'])
         return render(request, 'products.html', {"product": product})
 
 
